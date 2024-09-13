@@ -1,6 +1,5 @@
 import json
 
-# Função para calcular os valores desejados
 def calcular_faturamento(dados):
     valores = [item['valor'] for item in dados if item['valor'] > 0]
 
@@ -19,17 +18,20 @@ def calcular_faturamento(dados):
         "dias_acima_da_media": dias_acima_da_media
     }
 
-# Função principal para ler o arquivo JSON e calcular os valores
+
 def main():
-    # Substitua 'faturamento.json' pelo caminho do seu arquivo JSON
+    """
+    Função principal para ler o arquivo JSON e calcular os valores.
+    """
     with open('faturamento.json', 'r') as file:
-        dados = json.load(file)["faturamento"]
+        dados = json.load(file)
 
     resultados = calcular_faturamento(dados)
 
     print(f"Menor valor de faturamento: {resultados['menor_faturamento']}")
     print(f"Maior valor de faturamento: {resultados['maior_faturamento']}")
-    print(f"Número de dias com faturamento acima da média:             {resultados['dias_acima_da_media']}")
+    print(f"Número de dias com faturamento acima da média: {resultados['dias_acima_da_media']}")
+
 
 if __name__ == "__main__":
     main()
